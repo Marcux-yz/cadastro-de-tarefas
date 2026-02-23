@@ -10,3 +10,11 @@ Um sistema simples de cadastro de tarefas (A simple system for registering tasks
 ## Tecnologias Usadas (Technologies Used)
 - UI: React
 - Database: Local Storage
+
+## Conceitos Aprendidos (Concepts Learned)
+- Componentes (Components)
+- Estados (States)
+- Local Storage
+- Condicionais (Conditions)
+- Loops
+- JSX/TSX
