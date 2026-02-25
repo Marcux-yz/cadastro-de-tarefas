@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components"
 import Header from "./Header"
+import Footer from "./Footer"
+import Center from "./Center"
 
 const EstilosGlobais = createGlobalStyle`
   * {
@@ -13,6 +15,9 @@ const EstilosGlobais = createGlobalStyle`
 const StyledApp = styled.div`
   height: 100vh;
   width: 100vw;
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  background-color: bisque;
 `
 
 const App = () => {
@@ -21,6 +26,8 @@ const App = () => {
       <EstilosGlobais/>
       <StyledApp>
         <Header texto="Cadastro de Tarefas"/>
+        <Center></Center>
+        <Footer texto="Feito por Marcus Vinicius"/>
       </StyledApp>
     </>
   )

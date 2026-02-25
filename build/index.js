@@ -18639,15 +18639,65 @@ See https://styled-components.com/docs/faqs#why-am-i-getting-a-warning-about-sev
 
 // src/components/Header.tsx
 var jsx_dev_runtime = __toESM(require_jsx_dev_runtime(), 1);
+var StyledHeaderDiv = ct.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+var StyledHeader = ct.h1`
+  font-size: 40px;
+`;
 var Header = (props) => {
-  return /* @__PURE__ */ jsx_dev_runtime.jsxDEV("h1", {
-    children: props.texto
+  return /* @__PURE__ */ jsx_dev_runtime.jsxDEV(StyledHeaderDiv, {
+    children: /* @__PURE__ */ jsx_dev_runtime.jsxDEV(StyledHeader, {
+      children: props.texto
+    }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 };
 var Header_default = Header;
 
-// src/components/App.tsx
+// src/components/Footer.tsx
 var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
+var StyledFooter = ct.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+var StyledParagraph = ct.p`
+  font-size: 20px;
+`;
+var Footer = (props) => {
+  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(StyledFooter, {
+    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(StyledParagraph, {
+      children: props.texto
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+};
+var Footer_default = Footer;
+
+// src/components/Center.tsx
+var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
+var StyledCenter = ct.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+var StyledCenterDiv = ct.div`
+  background-color: white;
+  border-radius: 10px;
+  height: 100%;
+  width: 50%;
+  overflow-y: scroll;
+`;
+var Center = () => {
+  return /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(StyledCenter, {
+    children: /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(StyledCenterDiv, {}, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+};
+var Center_default = Center;
+
+// src/components/App.tsx
+var jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime(), 1);
 var EstilosGlobais = lt`
   * {
     padding: 0px;
@@ -18659,21 +18709,30 @@ var EstilosGlobais = lt`
 var StyledApp = ct.div`
   height: 100vh;
   width: 100vw;
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  background-color: bisque;
 `;
 var App = () => {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
+  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
     children: [
-      /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(EstilosGlobais, {}, undefined, false, undefined, this),
-      /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(StyledApp, {
-        children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(Header_default, {
-          texto: "Cadastro de Tarefas"
-        }, undefined, false, undefined, this)
-      }, undefined, false, undefined, this)
+      /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(EstilosGlobais, {}, undefined, false, undefined, this),
+      /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledApp, {
+        children: [
+          /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Header_default, {
+            texto: "Cadastro de Tarefas"
+          }, undefined, false, undefined, this),
+          /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Center_default, {}, undefined, false, undefined, this),
+          /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Footer_default, {
+            texto: "Feito por Marcus Vinicius"
+          }, undefined, false, undefined, this)
+        ]
+      }, undefined, true, undefined, this)
     ]
   }, undefined, true, undefined, this);
 };
 var App_default = App;
 
 // src/index.tsx
-var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
-import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsx_dev_runtime3.jsxDEV(App_default, {}, undefined, false, undefined, this));
+var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
+import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsx_dev_runtime5.jsxDEV(App_default, {}, undefined, false, undefined, this));
