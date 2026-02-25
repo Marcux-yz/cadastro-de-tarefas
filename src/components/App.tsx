@@ -26,7 +26,7 @@ const App = () => {
       <EstilosGlobais/>
       <StyledApp>
         <Header texto="Cadastro de Tarefas"/>
-        <Center></Center>
+        <Center/>
         <Footer texto="Feito por Marcus Vinicius"/>
       </StyledApp>
     </>

@@ -18675,8 +18675,41 @@ var Footer = (props) => {
 };
 var Footer_default = Footer;
 
-// src/components/Center.tsx
+// src/components/EntradaUsuario.tsx
 var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
+var StyledEntradaUsuario = ct.input`
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  
+`;
+var EntradaUsuario = () => {
+  return /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(StyledEntradaUsuario, {
+    placeholder: "Digite uma nova tarefa"
+  }, undefined, false, undefined, this);
+};
+var EntradaUsuario_default = EntradaUsuario;
+
+// src/components/StatusTarefas.tsx
+var jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime(), 1);
+var StyledStatusTarefa = ct.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+var StatusTarefas = (props) => {
+  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
+    children: props.temTarefas ? /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledStatusTarefa, {}, undefined, false, undefined, this) : /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledStatusTarefa, {
+      style: { color: "red", fontSize: 25 },
+      children: "Nenhuma tarefa criada"
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+};
+var StatusTarefas_default = StatusTarefas;
+
+// src/components/Center.tsx
+var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
 var StyledCenter = ct.div`
   display: flex;
   justify-content: center;
@@ -18688,16 +18721,26 @@ var StyledCenterDiv = ct.div`
   height: 100%;
   width: 50%;
   overflow-y: scroll;
+  display: grid;
+  grid-template-rows: 100px 50px 1fr;
+  padding: 30px;
 `;
 var Center = () => {
-  return /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(StyledCenter, {
-    children: /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(StyledCenterDiv, {}, undefined, false, undefined, this)
+  return /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledCenter, {
+    children: /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledCenterDiv, {
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(EntradaUsuario_default, {}, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StatusTarefas_default, {
+          temTarefas: false
+        }, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
   }, undefined, false, undefined, this);
 };
 var Center_default = Center;
 
 // src/components/App.tsx
-var jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime(), 1);
 var EstilosGlobais = lt`
   * {
     padding: 0px;
@@ -18714,16 +18757,16 @@ var StyledApp = ct.div`
   background-color: bisque;
 `;
 var App = () => {
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
+  return /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(jsx_dev_runtime6.Fragment, {
     children: [
-      /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(EstilosGlobais, {}, undefined, false, undefined, this),
-      /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledApp, {
+      /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(EstilosGlobais, {}, undefined, false, undefined, this),
+      /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(StyledApp, {
         children: [
-          /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Header_default, {
+          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(Header_default, {
             texto: "Cadastro de Tarefas"
           }, undefined, false, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Center_default, {}, undefined, false, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Footer_default, {
+          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(Center_default, {}, undefined, false, undefined, this),
+          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(Footer_default, {
             texto: "Feito por Marcus Vinicius"
           }, undefined, false, undefined, this)
         ]
@@ -18734,5 +18777,5 @@ var App = () => {
 var App_default = App;
 
 // src/index.tsx
-var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
-import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsx_dev_runtime5.jsxDEV(App_default, {}, undefined, false, undefined, this));
+var jsx_dev_runtime7 = __toESM(require_jsx_dev_runtime(), 1);
+import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsx_dev_runtime7.jsxDEV(App_default, {}, undefined, false, undefined, this));
