@@ -18700,7 +18700,15 @@ var StyledStatusTarefa = ct.div`
 `;
 var StatusTarefas = (props) => {
   return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: props.temTarefas ? /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledStatusTarefa, {}, undefined, false, undefined, this) : /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledStatusTarefa, {
+    children: props.listaTarefas.length !== 0 ? /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledStatusTarefa, {
+      style: { color: "green", fontSize: 25 },
+      children: [
+        "Você possui ",
+        props.listaTarefas.length,
+        " ",
+        props.listaTarefas.length === 1 ? "tarefa" : "tarefas"
+      ]
+    }, undefined, true, undefined, this) : /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(StyledStatusTarefa, {
       style: { color: "red", fontSize: 25 },
       children: "Nenhuma tarefa criada"
     }, undefined, false, undefined, this)
@@ -18731,7 +18739,7 @@ var Center = () => {
       children: [
         /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(EntradaUsuario_default, {}, undefined, false, undefined, this),
         /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StatusTarefas_default, {
-          temTarefas: false
+          listaTarefas: []
         }, undefined, false, undefined, this)
       ]
     }, undefined, true, undefined, this)

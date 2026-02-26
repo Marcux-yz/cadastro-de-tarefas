@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 type Props = {
-  temTarefas: boolean
+  listaTarefas: string[]
 }
 
 const StyledStatusTarefa = styled.div`
@@ -13,7 +13,9 @@ const StyledStatusTarefa = styled.div`
 const StatusTarefas = (props: Props) => {
   return (
     <>
-      {props.temTarefas ? <StyledStatusTarefa></StyledStatusTarefa>
+      {props.listaTarefas.length !== 0 ?
+      <StyledStatusTarefa
+      style={{color: "green", fontSize: 25}}>Você possui {props.listaTarefas.length} {props.listaTarefas.length === 1 ? "tarefa" : "tarefas"}</StyledStatusTarefa>
       : <StyledStatusTarefa
       style={{color: "red", fontSize: 25}}>Nenhuma tarefa criada</StyledStatusTarefa>}
     </>

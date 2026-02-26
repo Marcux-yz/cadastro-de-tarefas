@@ -24,7 +24,7 @@ const Center = () => {
     <StyledCenter>
       <StyledCenterDiv>
         <EntradaUsuario/>
-        <StatusTarefas temTarefas={false}/>
+        <StatusTarefas listaTarefas={[]}/>
       </StyledCenterDiv>
     </StyledCenter>
   )
