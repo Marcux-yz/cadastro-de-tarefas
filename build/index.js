@@ -18676,17 +18676,27 @@ var Footer = (props) => {
 var Footer_default = Footer;
 
 // src/components/EntradaUsuario.tsx
+var import_react2 = __toESM(require_react(), 1);
 var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
 var StyledEntradaUsuario = ct.input`
   height: 50px;
   width: 100%;
   padding: 10px;
   font-size: 20px;
-  
 `;
-var EntradaUsuario = () => {
+var EntradaUsuario = (props) => {
+  const [tarefa, setTarefa] = import_react2.useState("");
+  const handlePressEnter = (e) => {
+    if (e.key === "Enter" && tarefa.trim() !== "") {
+      props.onAdicionar(tarefa);
+      setTarefa("");
+    }
+  };
   return /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(StyledEntradaUsuario, {
-    placeholder: "Digite uma nova tarefa"
+    placeholder: "Digite uma nova tarefa (Pressione Enter para criar a tarefa)",
+    value: tarefa,
+    onChange: (e) => setTarefa(e.currentTarget.value),
+    onKeyDown: (e) => handlePressEnter(e)
   }, undefined, false, undefined, this);
 };
 var EntradaUsuario_default = EntradaUsuario;
@@ -18717,7 +18727,60 @@ var StatusTarefas = (props) => {
 var StatusTarefas_default = StatusTarefas;
 
 // src/components/Center.tsx
+var import_react3 = __toESM(require_react(), 1);
+
+// src/components/TabelaTarefas.tsx
 var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
+var StyledTable = ct.table`
+  border-collapse: collapse;
+  width: 100%;
+  height: 10%;
+  table-layout: fixed;
+`;
+var StyledTableHead = ct.th`
+  border: 1px solid black;
+  text-align: left;
+  padding: 10px;
+`;
+var StyledTableData = ct.td`
+  border: 1px solid black;
+  text-align: left;
+  padding: 10px;
+`;
+var TabelaTarefas = (props) => {
+  return /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledTable, {
+    children: [
+      /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("thead", {
+        children: /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("tr", {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledTableHead, {
+              children: "Index"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledTableHead, {
+              children: "Tarefa"
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this)
+      }, undefined, false, undefined, this),
+      /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("tbody", {
+        children: props.listaTarefas.map((tarefa, index) => /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("tr", {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledTableData, {
+              children: index + 1
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledTableData, {
+              children: tarefa
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this))
+      }, undefined, false, undefined, this)
+    ]
+  }, undefined, true, undefined, this);
+};
+var TabelaTarefas_default = TabelaTarefas;
+
+// src/components/Center.tsx
+var jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime(), 1);
 var StyledCenter = ct.div`
   display: flex;
   justify-content: center;
@@ -18726,20 +18789,38 @@ var StyledCenter = ct.div`
 var StyledCenterDiv = ct.div`
   background-color: white;
   border-radius: 10px;
-  height: 100%;
+  max-height: 500px;
   width: 50%;
   overflow-y: scroll;
   display: grid;
-  grid-template-rows: 100px 50px 1fr;
+  grid-template-rows: auto 100px 1fr;
   padding: 30px;
 `;
 var Center = () => {
-  return /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledCenter, {
-    children: /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StyledCenterDiv, {
+  const [listaTarefas, setListaTarefas] = import_react3.useState([]);
+  const adicionarTarefa = (novaTarefa) => {
+    setListaTarefas([...listaTarefas, novaTarefa]);
+  };
+  return /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(StyledCenter, {
+    children: /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(StyledCenterDiv, {
       children: [
-        /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(EntradaUsuario_default, {}, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(StatusTarefas_default, {
-          listaTarefas: []
+        /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(EntradaUsuario_default, {
+          onAdicionar: adicionarTarefa
+        }, undefined, false, undefined, this),
+        listaTarefas.length !== 0 && /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(jsx_dev_runtime6.Fragment, {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(StatusTarefas_default, {
+              listaTarefas
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(TabelaTarefas_default, {
+              listaTarefas
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        listaTarefas.length === 0 && /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(jsx_dev_runtime6.Fragment, {
+          children: /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(StatusTarefas_default, {
+            listaTarefas
+          }, undefined, false, undefined, this)
         }, undefined, false, undefined, this)
       ]
     }, undefined, true, undefined, this)
@@ -18748,7 +18829,7 @@ var Center = () => {
 var Center_default = Center;
 
 // src/components/App.tsx
-var jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime7 = __toESM(require_jsx_dev_runtime(), 1);
 var EstilosGlobais = lt`
   * {
     padding: 0px;
@@ -18765,16 +18846,16 @@ var StyledApp = ct.div`
   background-color: bisque;
 `;
 var App = () => {
-  return /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(jsx_dev_runtime6.Fragment, {
+  return /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(jsx_dev_runtime7.Fragment, {
     children: [
-      /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(EstilosGlobais, {}, undefined, false, undefined, this),
-      /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(StyledApp, {
+      /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(EstilosGlobais, {}, undefined, false, undefined, this),
+      /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(StyledApp, {
         children: [
-          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(Header_default, {
+          /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(Header_default, {
             texto: "Cadastro de Tarefas"
           }, undefined, false, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(Center_default, {}, undefined, false, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(Footer_default, {
+          /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(Center_default, {}, undefined, false, undefined, this),
+          /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(Footer_default, {
             texto: "Feito por Marcus Vinicius"
           }, undefined, false, undefined, this)
         ]
@@ -18785,5 +18866,5 @@ var App = () => {
 var App_default = App;
 
 // src/index.tsx
-var jsx_dev_runtime7 = __toESM(require_jsx_dev_runtime(), 1);
-import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsx_dev_runtime7.jsxDEV(App_default, {}, undefined, false, undefined, this));
+var jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime(), 1);
+import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */ jsx_dev_runtime8.jsxDEV(App_default, {}, undefined, false, undefined, this));
